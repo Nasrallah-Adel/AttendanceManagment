@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -43,6 +44,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class First_time_student extends AppCompatActivity {
+    int ii ;
     DatabaseReference reference;
     private StorageReference mStorageRef;
     private StorageReference imgRef;
@@ -50,6 +52,7 @@ public class First_time_student extends AppCompatActivity {
     FirebaseStorage storage;
     ImageView im;
     Button bt1, bt2;
+    TextView tv;
 
     FirebaseDatabase mFirebaseDatabaseReference;
 
@@ -64,8 +67,9 @@ public class First_time_student extends AppCompatActivity {
         storage = FirebaseStorage.getInstance("gs://attendance-managment-c079f.appspot.com");
         mFirebaseDatabaseReference = FirebaseDatabase.getInstance("https://attendance-managment-c079f.firebaseio.com/");
         mStorageRef = storage.getReference();
+        ii = new Random().nextInt(50) + 1;
 
-        imgRef = mStorageRef.child("students");
+        imgRef = mStorageRef.child("student");
 
 
     }
@@ -77,6 +81,16 @@ public class First_time_student extends AppCompatActivity {
     public void take(View view) {
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, 100);
+
+
+    }
+
+    public void del(View view) {
+        try {
+            delMethod();
+        } catch (Exception e) {
+
+        }
 
 
     }
@@ -94,7 +108,7 @@ public class First_time_student extends AppCompatActivity {
 
         loading.setVisibility(View.VISIBLE);
 
-        StorageReference tripsRef = imgRef.child(26 + ".png");
+        StorageReference tripsRef = imgRef.child(ii+"");
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ib.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] data = baos.toByteArray();
@@ -135,9 +149,9 @@ public class First_time_student extends AppCompatActivity {
         //set the criminal data;
         StudentModel criminal = new StudentModel();
 
-        criminal.setId("26");
+        criminal.setId(ii + "");
 
-        criminal.setName("Nasrallah");
+        criminal.setName("Nasrallah" + ii);
 
 
         criminal.setMobDNA(image);
@@ -168,10 +182,92 @@ public class First_time_student extends AppCompatActivity {
 
 
     /**
-     * hena 3ashan e3mel request
-     *
-     * @throws JSONException
+     * hena 3ashan e3mel delete fe el api
      */
+    private void delMethod() throws JSONException {
+
+        loading.setVisibility(View.VISIBLE);
+        //the return type
+        //url
+
+        String url = "https://api.kairos.com/gallery/remove";
+
+        //body to send in the request
+        JSONObject content_json_object = new JSONObject();
+        try {
+
+            content_json_object.put("gallery_name", "student");
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url,
+                content_json_object, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println("responce voooo " + response.toString());
+                Log.d("volleey", response.toString());
+
+                    loading.setVisibility(View.GONE);
+                    Toast.makeText(First_time_student.this, "شكرا تمت الازالة", Toast.LENGTH_LONG).show();
+
+
+                loading.setVisibility(View.GONE);
+//                try {
+//                    activity.onRequestServed(response, code);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                loading.setVisibility(View.GONE);
+//                VolleyLog.d(tag, "Error: " + error.getMessage());
+                Log.e("ONerrorResponse", "Site Info Error: " + error.getMessage());
+                Toast.makeText(First_time_student.this, "حدث خطأ برجاء المحاوله مره اخري", Toast.LENGTH_LONG).show();
+
+            }
+        }) {
+
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                headers.put("app_id", "623be28d");
+                headers.put("app_key", "11f606af354ab90750553b704ad86caa");
+                return headers;
+            }
+        };
+
+
+        jsObjRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 50000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 50000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+        // Access the RequestQueue through your singleton class.
+        VolleySingleton.getInstance(this).addRequestQue(jsObjRequest);
+
+    }
+
     private void enrollMethod(final StudentModel criminal) throws JSONException {
 
 
@@ -185,7 +281,7 @@ public class First_time_student extends AppCompatActivity {
         try {
             content_json_object.put("image", criminal.getMobDNA());
             content_json_object.put("subject_id", criminal.getId());
-            content_json_object.put("gallery_name", "Students");
+            content_json_object.put("gallery_name", "student");
 
         } catch (JSONException e) {
             // TODO Auto-generated catch block
@@ -197,20 +293,14 @@ public class First_time_student extends AppCompatActivity {
 
             @Override
             public void onResponse(JSONObject response) {
-                System.out.println("responce voooo "+response.toString());
+                System.out.println("responce voooo " + response.toString());
                 Log.d("volleey", response.toString());
-                if (response.has("face_id")) {
-                    reference = FirebaseDatabase.getInstance().getReference().child("University")
-                            .child("Faculty").child("face").push();
-                    reference.setValue(criminal);
+
                     loading.setVisibility(View.GONE);
                     Toast.makeText(First_time_student.this, "شكرا تمت الإضافة بنجاح", Toast.LENGTH_LONG).show();
 
-                } else {
-                    Toast.makeText(First_time_student.this, "حدث خطأ برجاء المحاوله مره اخري", Toast.LENGTH_LONG).show();
 
-                }
-                loading.setVisibility(View.GONE);
+
 //                try {
 //                    activity.onRequestServed(response, code);
 //                } catch (JSONException e) {

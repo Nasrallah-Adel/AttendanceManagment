@@ -1,20 +1,9 @@
 package com.example.mostafaaboelnasr.attendancemanagment;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -23,16 +12,10 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.mostafaaboelnasr.attendancemanagment.models.firebaseModels.StudentModel;
 import com.example.mostafaaboelnasr.attendancemanagment.utils.VolleySingleton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -42,27 +25,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RecognizeActivity extends AppCompatActivity {
-    ProgressBar loading;
-    FirebaseStorage storage;
-    ImageView im;
-    Button bt1, bt2;
+/**
+ * Created by root on 4/18/18.
+ */
+
+public class recognize_me {
     private StorageReference mStorageRef;
     private StorageReference imgRef;
     FirebaseDatabase mFirebaseDatabaseReference;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recognize);
-        bt1 = findViewById(R.id.tak);
-        bt2 = findViewById(R.id.chec);
-        im = findViewById(R.id.imm);
-        loading = findViewById(R.id.loadin);
+    FirebaseStorage storage;
+Bitmap ib;
+    public recognize_me(Bitmap ibb) {
+ib=ibb;
         storage = FirebaseStorage.getInstance("gs://attendance-managment-c079f.appspot.com");
         mFirebaseDatabaseReference = FirebaseDatabase.getInstance("https://attendance-managment-c079f.firebaseio.com/");
         mStorageRef = storage.getReference();
@@ -70,29 +47,7 @@ public class RecognizeActivity extends AppCompatActivity {
         imgRef = mStorageRef.child("temp");
     }
 
-    public void take(View v) {
-        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(cameraIntent, 100);
-
-
-    }
-
-    Bitmap ib;
-
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
-            ib = (Bitmap) data.getExtras().get("data");
-            im.setImageBitmap(ib);
-        }
-
-
-    }
-
-
     public void check(View view) {
-
-        loading.setVisibility(View.VISIBLE);
 
         StorageReference tripsRef = imgRef.child(29 + ".png");
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -104,15 +59,13 @@ public class RecognizeActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle unsuccessful uploads
-                Toast.makeText(RecognizeActivity.this, "حدث خطأ", Toast.LENGTH_LONG).show();
-                loading.setVisibility(View.GONE);
+
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                Toast.makeText(RecognizeActivity.this, "ok", Toast.LENGTH_LONG).show();
-                loading.setVisibility(View.GONE);
+
                 String imageUrl = taskSnapshot.getDownloadUrl().toString();
                 try {
                     RecognizeMethod(imageUrl);
@@ -159,11 +112,10 @@ public class RecognizeActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                loading.setVisibility(View.GONE);
+
 //                VolleyLog.d(tag, "Error: " + error.getMessage());
                 Log.e("vo err", "Site Info Error: " + error.getMessage());
-                Toast.makeText(RecognizeActivity.this, "حدث خطأ", Toast.LENGTH_LONG).show();
-                finish();
+
             }
         }) {
 
@@ -222,7 +174,7 @@ public class RecognizeActivity extends AppCompatActivity {
     private void ExtractJson(JSONObject response) throws JSONException {
 
         JSONArray images = response.getJSONArray("images");
-        System.out.println("jason arary "+response);
+        System.out.println("jason arary " + response);
         JSONObject objectImages = images.getJSONObject(0);
 
         JSONObject candidates = null;
@@ -270,6 +222,5 @@ public class RecognizeActivity extends AppCompatActivity {
 
 
     }
-
 
 }

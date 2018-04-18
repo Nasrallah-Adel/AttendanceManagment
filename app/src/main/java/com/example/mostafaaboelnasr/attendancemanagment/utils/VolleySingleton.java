@@ -25,7 +25,7 @@ public class VolleySingleton {
     }
 
     public <T> void addRequestQue(Request<T> request) {
-
+        request.setShouldCache(false);
         mRequestQueue.add(request);
     }
 
