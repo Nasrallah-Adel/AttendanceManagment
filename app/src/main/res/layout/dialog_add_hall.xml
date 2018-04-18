@@ -24,10 +24,10 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners"
                 android:hint="@string/hall_name"
+                android:inputType="textAutoCorrect"
                 android:paddingBottom="16dp"
                 android:paddingLeft="44dp"
                 android:paddingRight="16dp"
-                android:inputType="textAutoCorrect"
                 android:paddingTop="16dp"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
@@ -67,18 +67,15 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners"
                 android:hint="@string/hall_high"
+                android:inputType="number"
                 android:paddingBottom="16dp"
                 android:paddingLeft="44dp"
                 android:paddingRight="16dp"
-                android:inputType="number"
                 android:paddingTop="16dp"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
                 android:textColor="@color/colorText"
-                android:textSize="16dp">
-
-                <requestFocus />
-            </EditText>
+                android:textSize="16dp"/>
 
             <ImageView
                 android:layout_width="30dp"
@@ -110,18 +107,16 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners"
                 android:hint="@string/hall_des"
+                android:inputType="textAutoCorrect"
                 android:paddingBottom="16dp"
                 android:paddingLeft="44dp"
                 android:paddingRight="16dp"
-                android:inputType="textAutoCorrect"
                 android:paddingTop="16dp"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
                 android:textColor="@color/colorText"
-                android:textSize="16dp">
+                android:textSize="16dp"/>
 
-                <requestFocus />
-            </EditText>
 
             <ImageView
                 android:layout_width="30dp"

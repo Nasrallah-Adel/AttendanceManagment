@@ -25,10 +25,12 @@ dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
     compile 'com.android.support:design:26.1.0'
     compile 'com.android.support:recyclerview-v7:26.1.0'
-    //volley
+    compile 'com.github.IntruderShanky:Frisson:2.1.1'
+    implementation 'com.shuhart.stepview:stepview:1.2.6'
+    compile 'com.borjabravo:readmoretextview:2.1.0'
     compile 'com.android.volley:volley:1.0.0'
+
     // Firebase
-    compile "com.google.firebase:firebase-auth:11.0.1"
     compile 'com.google.firebase:firebase-core:11.0.1'
     compile 'com.google.firebase:firebase-crash:11.0.1'
     compile 'com.google.firebase:firebase-database:11.0.1'

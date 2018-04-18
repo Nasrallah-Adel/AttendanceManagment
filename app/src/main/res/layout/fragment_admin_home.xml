@@ -1,0 +1,129 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".admin_dir.fragments.AdminHomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/studentsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:background="@color/blue">
+
+        <ProgressBar
+            android:id="@+id/studentsProgressBar"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Large"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha=".4"
+            android:elevation="10dp"
+            android:indeterminate="true"
+            android:padding="35dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/studentsTextView"
+            style="@style/SelectTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/students" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2sp"
+        android:background="@color/lightGray" />
+
+    <RelativeLayout
+        android:id="@+id/tutorsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:background="@color/green">
+
+        <ProgressBar
+            android:id="@+id/tutorsProgressBar"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Large"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha=".4"
+            android:elevation="10dp"
+            android:indeterminate="true"
+            android:padding="35dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tutorsTextView"
+            style="@style/SelectTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tutors" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2sp"
+        android:background="@color/lightGray" />
+
+    <RelativeLayout
+        android:id="@+id/hallsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:background="@color/red">
+
+        <ProgressBar
+            android:id="@+id/hallsProgressBar"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Large"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha=".4"
+            android:background="@color/background"
+            android:elevation="10dp"
+            android:indeterminate="true"
+            android:padding="35dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/hallsTextView"
+            style="@style/SelectTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/halls" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2sp"
+        android:background="@color/lightGray" />
+
+    <RelativeLayout
+        android:id="@+id/subjectsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:background="@color/colorPrimary">
+
+        <ProgressBar
+            android:id="@+id/subjectsProgressBar"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Large"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha=".4"
+            android:elevation="10dp"
+            android:indeterminate="true"
+            android:padding="35dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/subjectsTextView"
+            style="@style/SelectTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/subjects" />
+    </RelativeLayout>
+</LinearLayout>

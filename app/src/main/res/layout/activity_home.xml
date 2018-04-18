@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mostafaaboelnasr.attendancemanagment.HomeActivity">
+    tools:context="com.example.mostafaaboelnasr.attendancemanagment.admin_dir.HomeActivity">
 
-    <FrameLayout
+    <!--<FrameLayout-->
+    <!--android:id="@+id/viewpagerHome"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@color/darkBlue" />-->
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayoutTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#C3C5C7" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:tabBackground="@color/white"
+            app:tabGravity="fill"
+            app:tabMode="fixed" />
+    </android.support.design.widget.AppBarLayout>
+
+    <com.example.mostafaaboelnasr.attendancemanagment.utils.CustomViewPager
         android:id="@+id/viewpagerHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/darkBlue" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_above="@id/appBarLayoutTabs"
+        android:background="@drawable/shadow"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</RelativeLayout>

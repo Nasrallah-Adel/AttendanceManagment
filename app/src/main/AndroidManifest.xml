@@ -9,16 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".First_time_student" />
-        <activity android:name=".RecognizeActivity"></activity>
+        <activity
+            android:name=".admin_dir.HomeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity android:name=".tutor_dir.TutorActivity" />
+        <activity android:name=".student.StudentActivity" />
+        <activity android:name=".student.RecognizeActivity" />
+        <activity android:name=".First_time_student"></activity>
     </application>
 
 </manifest>

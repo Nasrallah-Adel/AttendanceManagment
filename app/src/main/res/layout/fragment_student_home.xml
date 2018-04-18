@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mostafaaboelnasr.attendancemanagment.student.StudentHomeFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/subjects_Recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom"
+        android:layout_below="@id/search_RelativeLayout" />
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/live_sessionRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/gradient_down">
+
+            <LinearLayout
+                android:id="@+id/live_seasionLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/live_subject_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:text="Live session"
+                    android:textColor="#d03686bf"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/toggleView"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/circle_solid" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/addSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:drawableLeft="@drawable/ic_person_add_black_24dp"
+            android:drawableTint="@color/white"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="add subject"
+            android:textColor="@color/white"
+            android:textSize="19sp" />
+    </LinearLayout>
+</RelativeLayout>

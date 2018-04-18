@@ -3,9 +3,9 @@ package com.example.mostafaaboelnasr.attendancemanagment;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,15 +20,10 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.mostafaaboelnasr.attendancemanagment.models.firebaseModels.StudentModel;
-import com.example.mostafaaboelnasr.attendancemanagment.utils.VolleySingleton;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.mostafaaboelnasr.attendancemanagment.admin_dir.models.firebaseModels.StudentModel;
+import com.example.mostafaaboelnasr.attendancemanagment.student.VolleySingleton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -44,7 +39,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class First_time_student extends AppCompatActivity {
-    int ii ;
+    int ii;
     DatabaseReference reference;
     private StorageReference mStorageRef;
     private StorageReference imgRef;
@@ -108,7 +103,7 @@ public class First_time_student extends AppCompatActivity {
 
         loading.setVisibility(View.VISIBLE);
 
-        StorageReference tripsRef = imgRef.child(ii+"");
+        StorageReference tripsRef = imgRef.child(ii + "");
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ib.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] data = baos.toByteArray();
@@ -211,8 +206,8 @@ public class First_time_student extends AppCompatActivity {
                 System.out.println("responce voooo " + response.toString());
                 Log.d("volleey", response.toString());
 
-                    loading.setVisibility(View.GONE);
-                    Toast.makeText(First_time_student.this, "شكرا تمت الازالة", Toast.LENGTH_LONG).show();
+                loading.setVisibility(View.GONE);
+                Toast.makeText(First_time_student.this, "شكرا تمت الازالة", Toast.LENGTH_LONG).show();
 
 
                 loading.setVisibility(View.GONE);
@@ -296,9 +291,8 @@ public class First_time_student extends AppCompatActivity {
                 System.out.println("responce voooo " + response.toString());
                 Log.d("volleey", response.toString());
 
-                    loading.setVisibility(View.GONE);
-                    Toast.makeText(First_time_student.this, "شكرا تمت الإضافة بنجاح", Toast.LENGTH_LONG).show();
-
+                loading.setVisibility(View.GONE);
+                Toast.makeText(First_time_student.this, "شكرا تمت الإضافة بنجاح", Toast.LENGTH_LONG).show();
 
 
 //                try {

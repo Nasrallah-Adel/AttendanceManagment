@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/swipe_view"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/normal_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/person_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/edittext_background_white"
+                    android:gravity="center"
+                    android:hint="Person name"
+                    android:inputType="textAutoCorrect"
+                    android:padding="10dp"
+                    android:textColor="#656565"
+                    android:textColorHint="#656565" />
+
+                <TextView
+                    android:id="@+id/person_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/edittext_background_white"
+                    android:gravity="center"
+                    android:hint="Person email"
+                    android:inputType="textAutoCorrect"
+                    android:padding="10dp"
+                    android:textColor="#656565"
+                    android:textColorHint="#656565" />
+
+                <TextView
+                    android:id="@+id/person_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/edittext_background_white"
+                    android:gravity="center"
+                    android:hint="Phone"
+                    android:inputType="phone"
+                    android:padding="10dp"
+                    android:textColor="#656565"
+                    android:textColorHint="#656565" />
+
+                <TextView
+                    android:id="@+id/person_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/edittext_background_white"
+                    android:gravity="center"
+                    android:hint="Password"
+                    android:padding="10dp"
+                    android:textColor="#656565"
+                    android:textColorHint="#656565" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/edit_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/person_nameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/edittext_background_white"
+                    android:gravity="center"
+                    android:hint="Name"
+                    android:inputType="textAutoCorrect"
+                    android:padding="10dp"
+                    android:textColor="#656565"
+                    android:textColorHint="#656565" />
+
+                <EditText
+                    android:id="@+id/person_emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/edittext_background_white"
+                    android:gravity="center"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="10dp"
+                    android:textColor="#656565"
+                    android:textColorHint="#656565" />
+
+                <EditText
+                    android:id="@+id/person_phoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/edittext_background_white"
+                    android:gravity="center"
+                    android:hint="Phone"
+                    android:inputType="phone"
+                    android:padding="10dp"
+                    android:textColor="#656565"
+                    android:textColorHint="#656565" />
+
+                <EditText
+                    android:id="@+id/person_passEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/edittext_background_white"
+                    android:gravity="center"
+                    android:hint="Pass"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textColor="#656565"
+                    android:textColorHint="#656565" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right">
+
+            <ImageView
+                android:id="@+id/done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_done_all_black_24dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_edit_black_24dp" />
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:src="@drawable/ic_close_black_24dp"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

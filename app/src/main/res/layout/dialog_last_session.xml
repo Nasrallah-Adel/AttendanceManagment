@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/upper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/background_alpha"
+        android:orientation="vertical"
+        android:padding="2dp">
+
+        <TextView
+            android:id="@+id/subjectName"
+            style="@style/SelectTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Subject name"
+            android:textSize="15sp" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/tutorName"-->
+            <!--style="@style/SelectTextView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="2dp"-->
+            <!--android:text="Tutor name"-->
+            <!--android:textSize="17sp" />-->
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/SelectTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha=".7"
+            android:padding="2dp"
+            android:text="Session date"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/hall"
+            style="@style/SelectTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha=".7"
+            android:padding="2dp"
+            android:text="hall"
+            android:textSize="12sp" />
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/StudentsAttendanceRecycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom"
+        android:layout_below="@id/upper"
+        android:layout_marginTop="10dp" />
+</RelativeLayout>

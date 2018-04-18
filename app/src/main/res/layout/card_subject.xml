@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:paddingLeft="4dp"
-            android:text="@string/hall_name"
+            android:text="@string/subject_name"
             android:textColor="#1D2129"
             android:textSize="15sp"
             android:textStyle="bold" />
